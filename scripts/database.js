@@ -69,6 +69,10 @@ const database = {
     ]
 }
 
+export const setProtein = (proteinId) => {
+    database.bowlBuilder.proteinId = proteinId
+}
+
 export const getOrders = () => {
     return database.bowls.map(bowl => ({...bowl}))
 }
