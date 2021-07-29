@@ -9,7 +9,6 @@ document.addEventListener(
     }
 )
 
-
 export const Proteins = () => {
     const allProteins = getProteins()
     let html = "<ul>"
@@ -24,8 +23,8 @@ export const Proteins = () => {
     )
 
     html += proteinHTMLArray.join("")
-
     html += "</ul>"
 
     return html
+
 }

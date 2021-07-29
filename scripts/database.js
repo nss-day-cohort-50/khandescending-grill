@@ -1,5 +1,5 @@
 const database = {
-    bowlBuilder: {},  // Transient state
+
 
     /*
         All permanent state is below
@@ -66,7 +66,9 @@ const database = {
     ],
     bowls: [
 
-    ]
+    ],
+
+    bowlBuilder: {},  // Transient state
 }
 
 export const setProtein = (proteinId) => {
