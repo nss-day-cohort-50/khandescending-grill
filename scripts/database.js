@@ -62,3 +62,33 @@ const database = {
 
     ]
 }
+
+export const getOrders = () => {
+    return database.bowls.map(bowl => ({...bowl}))
+}
+
+export const getProteins = () => {
+    return database.proteins.map(protein => ({...protein}))
+}
+
+export const getVeggies = () => {
+    return database.vegetables.map(veg => ({...veg}))
+}
+
+export const getSeasonings = () => {
+    return database.seasonings.map(seasoning => ({...seasoning}))
+}
+
+export const getCarbs = () => {
+    return database.carbs.map(carb => ({...carb}))
+}
+
+export const getSizes = () => {
+    return database.bowlSizes.map(size => ({...size}))
+}
+
+export const getSauces = () => {
+    return database.sauces.map(sauce => ({...sauce}))
+}
+
+
