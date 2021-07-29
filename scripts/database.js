@@ -10,6 +10,12 @@ const database = {
             name: "Armadillo",
             price: 5.00,
             isAnimal: true
+        },
+        {
+            id: 2,
+            name: "Panda",
+            price: 7.50,
+            isAnimal: true
         }
     ],
     vegetables: [
