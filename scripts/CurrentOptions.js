@@ -6,7 +6,6 @@ export const ChosenOptions = () => {
 
     let html = `<article class="cart">
         <ul class="ul--options chosen">
-
             ${
                 [...options].map(
                     ([, obj]) => {
@@ -14,16 +13,18 @@ export const ChosenOptions = () => {
                     }
                 ).join("")
             }
-
         </ul>
         <div class="subTotal">
-            Your bowl price will be $${ [...options].reduce(
-            (curr, [, obj]) => {
-                return obj ? curr + obj.price : curr
-            }, 0 ).toFixed(2) }
+            Your bowl price will be $${
+                [...options].reduce(
+                    (curr, [, obj]) => {
+                        return obj ? curr + obj.price : curr
+                    }
+                    , 0
+                ).toFixed(2)
+            }
         </div>
-    </article>
-    `
+    </article>`
 
     return html
 }

@@ -16,7 +16,6 @@ export const Proteins = () => {
     let html = "<ul class='proteins ul--options'>"
 
     const proteinHTMLArray = allProteins.map(
-        // The end result of this method will be an array of string
         (proteinObject) => {
             return `<li class="protein">
                 <input type="radio"
@@ -25,9 +24,6 @@ export const Proteins = () => {
                 value="${proteinObject.id}" />
                 ${proteinObject.name}
             </li>`
-
-
-
         }
     )
 
@@ -35,5 +31,4 @@ export const Proteins = () => {
     html += "</ul>"
 
     return html
-
 }

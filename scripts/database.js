@@ -1,6 +1,4 @@
 const database = {
-
-
     /*
         All permanent state is below
     */
@@ -181,7 +179,6 @@ export const wholeBunchaStuff = () => {
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
-
 export const getOrders = () => {
     return database.bowls.map(bowl => ({...bowl}))
 }
@@ -237,20 +234,6 @@ export const setSauce = (sauceId) => {
     database.bowlBuilder.sauceId = sauceId
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const getOptions = () => {
     const options = new Map()
