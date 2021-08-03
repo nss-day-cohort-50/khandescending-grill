@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-@import url('./proteins.css');
+@import url('./chosen.css');
 
 body {
     font-family: 'Quicksand', sans-serif;
@@ -8,11 +8,37 @@ body {
 .options {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
+}
+
+.option {
+    flex-basis: 24%;
+    border: 2px dashed fuchsia;
+    background-color: goldenrod;
+    border-radius: 5%;
+    padding: 0.25rem 1rem;
+    margin: 0.5rem 0.75rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
 }
 
 .ul--options {
     list-style-type: none;
     padding-inline-start: 0.4rem;
 }
+
+.purchase {
+    text-align: center;
+}
+
+#completeButton {
+    background-color: seagreen;
+    color:darkolivegreen;
+    font-size: x-large;
+    padding: 1rem;
+    border-radius: 20%;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
+}
+
+
+

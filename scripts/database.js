@@ -24,7 +24,7 @@ const database = {
             isAnimal: true
         },
         {
-            id: 3,
+            id: 4,
             name: "Tofu",
             price: 1.49,
             isAnimal: false
@@ -120,6 +120,12 @@ const database = {
             name: "MSG",
             price: 0.03,
             hasSodium: true
+        },
+        {
+            id: 4,
+            name: "Habanero Explosion",
+            price: 0.09,
+            hasSodium: false
         }
     ],
     bowlSizes: [
@@ -143,14 +149,38 @@ const database = {
     bowlBuilder: {},  // Transient state
 }
 
-export const setProtein = (proteinId) => {
-    database.bowlBuilder.proteinId = proteinId
+export const getBowlBuilder = () => {
+    return {...database.bowlBuilder}
 }
 
-export const setVegetable = (vegId) => {
-    database.bowlBuilder.vegetableId = vegId
-    debugger
+/*
+    Build something that holds the custom orders
+*/
+export const wholeBunchaStuff = () => {
+    // Convert transient to permanent state
+    const copyOfBowlBuilder = {...database.bowlBuilder}
+
+    // Add an `id`
+    if (database.bowls.length === 0) {
+        copyOfBowlBuilder.id = 1
+    }
+    else {
+        const lastIndex = database.bowls.length - 1
+        copyOfBowlBuilder.id = database.bowls[lastIndex].id + 1
+    }
+
+    // Add a timestamp
+    copyOfBowlBuilder.timestamp = Date.now()
+
+    // Make it permanent
+    database.bowls.push(copyOfBowlBuilder)
+
+    // Reset transient state
+    database.bowlBuilder = {}
+
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
+
 
 export const getOrders = () => {
     return database.bowls.map(bowl => ({...bowl}))
@@ -163,16 +193,36 @@ export const getProteins = () => {
         .reverse()
 }
 
+export const setCarb = (carbId) => {
+    database.bowlBuilder.carbId = carbId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+
 export const getVeggies = () => {
     return database.vegetables.map(veg => ({...veg}))
+}
+
+export const setVegetable = (vegId) => {
+    database.bowlBuilder.vegetableId = vegId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 export const getSeasonings = () => {
     return database.seasonings.map(seasoning => ({...seasoning}))
 }
 
+export const setSeasoning = (seasoningId) => {
+    database.bowlBuilder.seasoningId = seasoningId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+
 export const getCarbs = () => {
     return database.carbs.map(carb => ({...carb}))
+}
+
+export const setProtein = (proteinId) => {
+    database.bowlBuilder.proteinId = proteinId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 export const getSizes = () => {
@@ -183,4 +233,33 @@ export const getSauces = () => {
     return database.sauces.map(sauce => ({...sauce}))
 }
 
+export const setSauce = (sauceId) => {
+    database.bowlBuilder.sauceId = sauceId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const getOptions = () => {
+    const options = new Map()
+
+    options.set("carb", database.carbs.find(carb => database.bowlBuilder.carbId === carb.id))
+    options.set("protein", database.proteins.find(protein => database.bowlBuilder.proteinId === protein.id))
+    options.set("sauce", database.sauces.find(sauce => database.bowlBuilder.sauceId === sauce.id))
+    options.set("seasoning", database.seasonings.find(seasoning => database.bowlBuilder.seasoningId === seasoning.id))
+    options.set("vegetable", database.vegetables.find(veg => database.bowlBuilder.vegetableId === veg.id))
+
+    return options
+}

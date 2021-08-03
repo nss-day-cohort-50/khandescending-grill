@@ -1,4 +1,4 @@
-import { getVeggies, setVegetable } from "./database.js"
+import { getBowlBuilder, getVeggies, setVegetable } from "./database.js"
 
 document.addEventListener(
     "change",
@@ -11,12 +11,16 @@ document.addEventListener(
 
 export const Vegetables = () => {
     const allVegetables = getVeggies()
+    const chosenOptions = getBowlBuilder()
+
     let html = "<ul class='vegetables ul--options'>"
 
     const vegetableListItemsString = allVegetables
         .map((vegetableObject) => {
             return `<li class="vegetable">
-                    <input type="radio" name="vegetable" value="${vegetableObject.id}" />${vegetableObject.name}
+                    <input
+                    ${ (vegetableObject.id === chosenOptions.vegetableId) ? "checked" : "" }
+                    type="radio" name="vegetable" value="${vegetableObject.id}" />${vegetableObject.name}
                 </li>`
         })
         .join("")

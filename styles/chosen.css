@@ -1,0 +1,18 @@
+
+.cart {
+    background-color: aqua;
+    color: rgb(67, 16, 61);
+    padding: 1rem;
+    border: 3px dotted darkorchid;
+    margin-bottom: 2rem;
+}
+
+.chosen {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.subTotal {
+    margin-top: 1rem;
+    font-weight: 900;
+}

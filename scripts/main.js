@@ -9,3 +9,11 @@ const renderTheHTML = () => {
 
 renderTheHTML()
 
+
+document.addEventListener(
+    "stateChanged",
+    (customEvent) => {
+        console.log("State was changed, time to regenerate ALL OF THE HTML!!!!!!!!!!")
+        renderTheHTML()
+    }
+)
